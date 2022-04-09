@@ -8,121 +8,67 @@ import java.util.Scanner;
 public class Ado01 {
 
     public static void main(String[] args) throws FileNotFoundException {
-       File arquivo = new File("dicionario.txt"); //chama arquivo
+        String[] vetorOrdenado = leEprocessa();
+        String[] dicionario = new String [1000];
+            dicionario = vetorOrdenado;  
+        insertionSort(vetorOrdenado);
+        buscaBinaria(dicionario);
+        imprimirOrdenado(dicionario);
+ 
+    }
+
+    public static String[] leEprocessa() throws FileNotFoundException {
+        File arquivo = new File("dicionario.txt"); //chama arquivo
         Scanner leitor = new Scanner(arquivo); //lê arquivo
 
-        String texto = "" ; //atribui valor a variál, sem valor ela da erro o.O
+        String texto = ""; //atribui valor a variál, sem valor ela da erro o.O
 
-        while (leitor.hasNextLine()) { //percorre o texto lendo todas as linhas
-            texto += leitor.nextLine() + " "; //
+        while (leitor.hasNextLine()) { //percorre o texto
+            texto += leitor.nextLine() + " "; //lê todas as linhas
         }
-        //texto = texto.toLowerCase();
-        String[] vetor = texto.split(" ");
 
-        //imprimir vetor
-        for (int i = 0; i < vetor.length; i++) {
-            //System.out.println(vetor[i]);
+        String[] resultado = texto.split(" "); //quebra o vetor nos espaços
+         for (int i = 0; i < resultado.length; i++) { //percorre o vetor
+            // retira espaço antes e depois da palavra
+            // deixa todas as palavras em minúsculo
+            resultado[i] = resultado[i].trim().toLowerCase();
         }
-        
-        String aux;
-        
-        for (int i = 1; i > vetor.length; i++) { //percorre o vetor
-            for (int j = i-1; j < vetor.length; j--){
-                int posicao = j;
-                if (vetor[j].compareTo(vetor[j + 1]) > 0) { //trocar elementos  
-                    aux = vetor[j+1];
-                    vetor[j+1] = vetor[j];
-                    vetor[j] = aux;
-                    //System.out.println(vetor[posicao]);
+         return resultado;
+    } 
+    
+     public static void insertionSort(String[] texto) {
+        for (int i = 1; i < texto.length; i++) { // percorre o vetor
+            int j = i; //cria a posição j para comparação
+            String aux = texto[j]; // atribui o valor da posição de j a várial auxiliar
+           
+            while (j > 0 && texto[j-1].compareTo(aux) > 0) { //compara para ornedar
+                texto[j] = texto[j-1];
+                j--;
+            }
+            texto[j] = aux;
+        }
+    }
+     
+    public static void imprimirOrdenado(String[] texto) {
+        for (int i = 0; i < texto.length; i++) { //percorre o vetor
+            System.out.println(texto[i] + " ");
+        }
+    }
+
+    public static int buscaBinaria(String[] texto) {
+        int i = 0; //posição inicial
+        int f = texto.length - 1; //posição final
+        int m = (i + f) / 2;
+        while (i <= f) {
+            if (texto[m].equals(texto[i])) {
+                return m;
+            }else if (texto[m].compareTo(texto[i]) < 0) { // esquerda
+                    f = m - 1;
                 }
-                System.out.println(vetor[posicao]);
-            }
-            
+                else { //direita
+                    i = m + 1;
+                }
         }
-        
-        String[] vetorOrdeando = new String[1000];
-        
-        for (int i = 0; i < vetor.length; i++) {
-            int posicaoVetor = 0;
-            
-            if (!ExistePalavra(vetor[i], vetorOrdeando)) {
-                // inserir no vetor ordenado
-                vetorOrdeando[posicaoVetor] = vetor[i];
-                
-                posicaoVetor++;
-                
-            }
-        }
-        
-        ImprimirVetor(vetorOrdeando);
-    }
-    
-    
-    public static Boolean ExistePalavra(String palavra, String[] vetor){
-        for (int i = 0; i < vetor.length; i++) {
-            if (vetor[i] == palavra) {
-                return true;
-            }
-        }
-                
-        return false;
-    }
-    
-    public static void ImprimirVetor(String[] vetor) {
-        for (int i = 0; i < vetor.length; i++) {
-            if (vetor[i] != null)
-                System.out.println(vetor[i]);
-        }
+        return -1;
     }
 }
-            
-//        for (int j = 0; j < vetor.length; j++) { // analisar os dois valores
-//            if (vetor[j] == null) { //trocar elementos
-//                vetor[j] = texto;
-//                //break;
-//            } else if (texto.compareTo(vetor[j]) < 0) {
-//                posicao = j;
-//
-//                for (int i = vetor.length - 1; i > j; i--) {
-//                    vetor[i] = vetor[i - 1];
-//                }
-//
-//                vetor[posicao] = texto;
-                //break;
-//            }
-//            System.out.println(vetor[j].toLowerCase());
-//        }
-
-        
-//    public static void leEvetoriza() throws FileNotFoundException {
-//        File arquivo = new File("dicionario.txt"); //chama arquivo
-//        Scanner leitor = new Scanner(arquivo); //lê arquivo
-//
-//        String texto = "" ; //atribui valor a variál, sem valor ela da erro o.O
-//
-//        while (leitor.hasNextLine()) { //percorre o texto lendo todas as linhas
-//            texto += leitor.nextLine() + " "; //
-//        }
-//
-//        String[] vetor = texto.split(" ");
-//
-//        //imprimir vetor
-//        for (int i = 0; i < vetor.length; i++) {
-//            //System.out.println(vetor[i]);
-//        }
-//    }
-//    
-//    public static Integer[] insertionSort(Integer[] txt) {
-//        for (int i = 1; i < txt.length; i++) {
-//            int a = txt[i];
-//            int j;
-//            for (j = i - 1; j >= 0 && txt[j].compareTo(a) < 0; j--) {
-//                txt[j + 1] = txt[j];
-//                txt[j] = a;
-//                System.out.println(txt[j]);
-//            }
-//        }
-//        return txt;
-//    }
-//}
-    
