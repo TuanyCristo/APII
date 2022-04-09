@@ -8,12 +8,18 @@ import java.util.Scanner;
 public class Ado01 {
 
     public static void main(String[] args) throws FileNotFoundException {
-        String[] vetorOrdenado = leEprocessa();
-        String[] dicionario = new String [1000];
-            dicionario = vetorOrdenado;  
+        String[] vetor = leEprocessa();
+        String[] dicionario = new String[1000];
+          dicionario = vetor;
+        for (i = 0; i < dicionario.length; i++) {
+          posicao = dicionario[i];
+        }
+  
         insertionSort(vetorOrdenado);
-        buscaBinaria(dicionario);
-        imprimirOrdenado(dicionario);
+        
+        buscaBinaria(dicionario, posicao);
+        
+        imprimirOrdenado(dici7onario);
  
     }
 
@@ -55,7 +61,7 @@ public class Ado01 {
         }
     }
 
-    public static int buscaBinaria(String[] texto) {
+    public static int buscaBinaria(String[] texto, String palavra) {
         int i = 0; //posição inicial
         int f = texto.length - 1; //posição final
         int m = (i + f) / 2;
