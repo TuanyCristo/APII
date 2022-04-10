@@ -8,19 +8,20 @@ import java.util.Scanner;
 public class Ado01 {
 
     public static void main(String[] args) throws FileNotFoundException {
-        String[] vetor = leEprocessa();
         String[] dicionario = new String[1000];
-          dicionario = vetor;
-        for (i = 0; i < dicionario.length; i++) {
-          posicao = dicionario[i];
+        String[] vetorTexto = leEprocessa();
+
+        for (int i = 0; i < vetorTexto.length; i++) {
+            String palavra = vetorTexto[i];
+            
+            if (buscaBinaria(dicionario, palavra) == -1 && !palavra.equals("")) {
+                insereOrdenado(dicionario, palavra);
+            }
+
         }
-  
-        insertionSort(vetorOrdenado);
         
-        buscaBinaria(dicionario, posicao);
-        
-        imprimirOrdenado(dici7onario);
- 
+        imprimirOrdenado(dicionario);
+        System.out.println("total de palavras diferentes no dicionario = " + posicoesPreenchidas(dicionario));
     }
 
     public static String[] leEprocessa() throws FileNotFoundException {
@@ -40,35 +41,43 @@ public class Ado01 {
             resultado[i] = resultado[i].trim().toLowerCase();
         }
          return resultado;
-    } 
-    
-     public static void insertionSort(String[] texto) {
-        for (int i = 1; i < texto.length; i++) { // percorre o vetor
-            int j = i; //cria a posição j para comparação
-            String aux = texto[j]; // atribui o valor da posição de j a várial auxiliar
-           
-            while (j > 0 && texto[j-1].compareTo(aux) > 0) { //compara para ornedar
-                texto[j] = texto[j-1];
-                j--;
-            }
-            texto[j] = aux;
-        }
     }
+    
+    public static void insereOrdenado(String[] dicionario, String palavra) {   
+        for (int j = 0; j < dicionario.length; j++){ // percorre o vetor
+            if (dicionario[j] == null) { // palavra novba encontra posição nula
+                dicionario[j] = palavra; // palavra nova é adionada a posição nula
+                break;
+            } 
+            else if (palavra.compareTo(dicionario[j]) < 0 ){ // palavra é menor que a palavra da posição comparada
+                for (int i = dicionario.length -1; i >= j && i > 0 ; i--){ // percorre as 1000 posições movimentando os elementos para inserir a palavra nova
+                    dicionario[i] = dicionario[i - 1]; 
+                }
+                dicionario[j] = palavra;
+                break;
+            }
+        }
+    }    
      
     public static void imprimirOrdenado(String[] texto) {
         for (int i = 0; i < texto.length; i++) { //percorre o vetor
-            System.out.println(texto[i] + " ");
+            if (texto[i] != null) {
+                System.out.println(texto[i] + " ");
+            }
         }
     }
 
     public static int buscaBinaria(String[] texto, String palavra) {
+        int m;
         int i = 0; //posição inicial
-        int f = texto.length - 1; //posição final
-        int m = (i + f) / 2;
+        int f = posicoesPreenchidas(texto) - 1; //posição final
+        
         while (i <= f) {
-            if (texto[m].equals(texto[i])) {
+            m = (i + f) / 2;
+            
+            if (texto[m].equals(palavra)) {
                 return m;
-            }else if (texto[m].compareTo(texto[i]) < 0) { // esquerda
+            }else if (palavra.compareTo(texto[m]) < 0) { // esquerda
                     f = m - 1;
                 }
                 else { //direita
@@ -76,5 +85,17 @@ public class Ado01 {
                 }
         }
         return -1;
+    }
+    
+    public static int posicoesPreenchidas(String[] texto){
+        int posicoes = 0;
+        
+        for (int i = 0; i < texto.length; i++) {
+            if (texto[i] != null) {
+                posicoes++;
+            }
+        }
+        
+        return posicoes;
     }
 }
