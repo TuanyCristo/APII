@@ -1,3 +1,8 @@
+/*
+3) Implemente uma função recursiva para calcular a potência a elevado a n,
+supondo que tanto a quanto n sejam números inteiros positivos.
+*/
+
 package aulas;
 
 import java.util.Scanner;
