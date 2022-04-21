@@ -14,6 +14,16 @@ public class Exercice04_1304 {
         int num = leitor.nextInt();
 
         System.out.println(calculaBinario(num));
+        calculaBinarioProfessor(num);
+    }
+    
+    public static void calculaBinarioProfessor(int n){
+        if (n < 2) {
+            System.out.print(n);
+        } else {
+            calculaBinarioProfessor ( n / 2);
+            calculaBinarioProfessor ( n % 2);
+        } 
     }
 
     public static String calculaBinario(int n){
