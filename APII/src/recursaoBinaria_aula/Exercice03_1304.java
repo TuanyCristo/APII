@@ -3,7 +3,7 @@
 supondo que tanto a quanto n sejam números inteiros positivos.
 */
 
-package aulas;
+package recursaoBinaria_aula;
 
 import java.util.Scanner;
 

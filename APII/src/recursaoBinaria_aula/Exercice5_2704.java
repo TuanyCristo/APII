@@ -5,7 +5,7 @@ b) Encontrar o menor elemento no vetor;
 c) Fazer a soma dos elementos no vetor;
 d) Calcular a média aritmética dos elementos no vetor.*/
 
-package aulas;
+package recursaoBinaria_aula;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -20,9 +20,9 @@ public class Exercice5_2704 {
         int busca = buscaLinear(vetor, 12);
         
         if (busca >= 0) {
-            System.out.println("\nNumero na posicao: " + busca);
+            System.out.println("\nNumero 12 na posicao: " + busca);
         } else {
-            System.out.println("\nNumero procurado nao consta no vetor.");
+            System.out.println("\nNumero 12 nao consta no vetor.");
         }
         
         //Questão b:
@@ -80,10 +80,10 @@ public class Exercice5_2704 {
         return vetor[posicao] + somaRecursiva(vetor, posicao + 1);
     }
     
-        public static int mediaRecursiva(int[] vetor, int posicao) {
+        public static float mediaRecursiva(int[] vetor, int posicao) {
         if (posicao == vetor.length) 
             return 0;
-        int soma = vetor[posicao] + mediaRecursiva(vetor, posicao + 1);
+        float soma = vetor[posicao] + mediaRecursiva(vetor, posicao + 1);
         if (posicao == 0)
             return soma / vetor.length;
         return soma;

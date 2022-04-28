@@ -2,7 +2,7 @@
 4) Implemente uma função recursiva que receba como parâmetro um
 número natural e apresente o seu correspondente binário.
  */
-package aulas;
+package recursaoBinaria_aula;
 
 import java.util.Scanner;
 

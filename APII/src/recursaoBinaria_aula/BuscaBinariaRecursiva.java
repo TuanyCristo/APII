@@ -1,4 +1,4 @@
-package aulas;
+package recursaoBinaria_aula;
 
 public class BuscaBinariaRecursiva {
 
