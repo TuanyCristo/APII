@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class Exercicio1 {
 
     public static void main(String[] args) {
-        int[] v = {5, 8, 2, 1, 7, 4};
+        int[] v = {7, 8, 3, 5, 4};
         int[] auxiliar = new int[v.length]; //vetor auxiliar para armazenar e realocar 
         mergeSort(v, auxiliar, 0, v.length-1); //ordenação
         
