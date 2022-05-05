@@ -10,8 +10,8 @@ public class Exercicio1 {
 
     public static void main(String[] args) {
         int[] v = {5, 8, 2, 1, 7, 4};
-        int[] ordenado = new int[v.length];
-        mergeSort(v, ordenado, 0, v.length-1);
+        int[] auxiliar = new int[v.length]; //vetor auxiliar para armazenar e realocar 
+        mergeSort(v, auxiliar, 0, v.length-1); //ordenação
         
         System.out.println(Arrays.toString(v));
         
@@ -26,9 +26,9 @@ public class Exercicio1 {
         }
     }
     
-    public static void intercala(int a[], int[] b, int ini, int m, int f) {
+    public static void intercala(int v[], int[] w, int ini, int m, int f) {
         for (int i = ini; i <= f; i++) {
-            b[i] = a[i];
+            w[i] = v[i];
         }
 
         int esquerda = ini;
@@ -36,13 +36,13 @@ public class Exercicio1 {
 
         for (int i = ini; i <= f; i++) {
             if (esquerda > m) {
-                a[i] = b[direita++];
+                v[i] = w[direita++];
             } else if (direita > f) {
-                a[i] = b[esquerda++];
-            } else if (b[esquerda] < b[direita]) {
-                a[i] = b[esquerda++];
+                v[i] = w[esquerda++];
+            } else if (w[esquerda] < w[direita]) {
+                v[i] = w[esquerda++];
             } else {
-                a[i] = b[direita++];
+                v[i] = w[direita++];
             }
         }
     }
