@@ -17,7 +17,7 @@ public class Exercicio3 {
     public static void main(String[] args) {
         Scanner leitor = new Scanner(System.in);
         
-        System.out.print("Numero de coelhos: ");
+        System.out.print("Digite o numero de coelhos: ");
         int n = leitor.nextInt(); //pede o numero de coelhos para calcular a quantidade de orelhas
         
         System.out.println(calculaOrelhas(n, 2)); //n = nº de coelhos e 2 a quantidade de orelhas de cada coelho
@@ -28,7 +28,6 @@ public class Exercicio3 {
             if (n == 1) //caso base
                 return m;
             else
-                calculaOrelhas(n - 1, m); //recursão para chegar ao caso base
             return m + calculaOrelhas(n - 1, m);
         }
             return 0;
