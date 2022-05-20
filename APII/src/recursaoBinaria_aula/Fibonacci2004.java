@@ -3,10 +3,10 @@ package recursaoBinaria_aula;
 public class Fibonacci2004 {
 
     public static void main(String[] args) {
-        int num = 300;
-        for (int i = 0; i <= num; i++) {
-            System.out.println(fib(i) + " ");
-        }
+        int num = 5;
+//        for (int i = 0; i <= num; i++) {
+//            System.out.println(fib(i) + " ");
+//        }
         System.out.println(profundidade(num));
     }
     
