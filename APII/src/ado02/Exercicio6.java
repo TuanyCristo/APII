@@ -27,11 +27,13 @@ public class Exercicio6 {
         int a = leitor.nextInt();
         int b = leitor.nextInt();
         
+        int contador = divideA(a);
         
         
-        System.out.printf("| A %d | B %d | Parcelas  |\n", a, b);
+        System.out.printf("| A = %d | B = %d | Parcelas  |\n", a, b);
         //System.out.println(profundidade(divideA(a)));
         System.out.println("dividiu " + divideA(a) + " vezes");
+        System.out.println("dividiu B " + multiplicaB(b, contador) + " vezes");
 //        while (a > 0){
 //        System.out.println(divideA(a));
 //    }
@@ -39,7 +41,7 @@ public class Exercicio6 {
     
     public static void multiplicacaoRussa(int a, int b) {
         divideA(a);
-        multiplicaB(b);
+        //multiplicaB(b, );
         int soma;
         if (a % 2 == 0) {
             soma = 0;
@@ -49,18 +51,21 @@ public class Exercicio6 {
     }
     
     public static int divideA(int a) {
-        System.out.println(a);
-        if (a / 2 == 1) 
+        System.out.printf("| A = %d |\n", a );
+        if (a / 2  == 0) 
             return 1;
         else 
             return divideA(a / 2) + 1;
     }
 
-    public static int multiplicaB(int b) {
-       if (b == 1){
-            return 1;
+    public static int multiplicaB(int b, int a) {
+        System.out.printf("| B = %d |\n", b );
+        int contador = a;
+        System.out.println("contador: " + contador);
+       if (contador == 1){
+            return b * 2;
         } else{
-            return divideA(b * 2);
+            return multiplicaB((b * 2), - 1);
         }
     }
         
