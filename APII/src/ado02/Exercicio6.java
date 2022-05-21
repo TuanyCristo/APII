@@ -62,10 +62,12 @@ public class Exercicio6 {
         System.out.printf("| B = %d |\n", b );
         int contador = a;
         System.out.println("contador: " + contador);
+        while (contador >= multiplicaB(b,a)){
        if (contador == 1){
             return b * 2;
         } else{
             return multiplicaB((b * 2), - 1);
+        }
         }
     }
         
